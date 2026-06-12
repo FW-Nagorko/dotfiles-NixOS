@@ -8,6 +8,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  nix.settings.trusted-users = [
+    "root"
+    "nixos"
+  ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.substituters = [
       "https://nix-community.cachix.org"
