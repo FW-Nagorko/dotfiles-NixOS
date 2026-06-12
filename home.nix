@@ -12,7 +12,13 @@
     fzf
   ];
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      zen = "/mnt/c/Program\\ Files/Zen\\ Browser/zen.exe";
+      pi = "nix run github:numtide/llm-agents.nix#pi";
+    };
+  };
 
   programs.helix = {
     enable = true;
