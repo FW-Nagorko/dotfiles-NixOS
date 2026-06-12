@@ -61,6 +61,11 @@
   };
 
   programs.npm.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.starship.enable = true;
   programs.ssh = {
     enable = true;
