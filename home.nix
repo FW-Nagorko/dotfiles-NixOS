@@ -54,6 +54,7 @@
     };
   };
 
+  programs.npm.enable = true;
   programs.starship.enable = true;
   programs.ssh = {
     enable = true;
@@ -65,6 +66,14 @@
     };
   };
 
-  programs.git.enable = true;
-  
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name  = "FW-Nagorko";
+        email = "fil.wolinski@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+  };
 }
