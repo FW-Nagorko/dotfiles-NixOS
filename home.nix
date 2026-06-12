@@ -55,7 +55,15 @@
   };
 
   programs.starship.enable = true;
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+      matchBlocks = {
+      "github.com" = {
+        identityFile = "~/.ssh/github_ed25519";
+      };
+    };
+  };
 
   programs.git.enable = true;
   

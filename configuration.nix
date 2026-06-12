@@ -16,6 +16,7 @@
   
   home-manager.users.nixos = import ./home.nix;
 
+  programs.ssh.startAgent = true;
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
