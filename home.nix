@@ -10,6 +10,7 @@
     file
     dust
     fzf
+    nil
   ];
 
   programs.bash = {
