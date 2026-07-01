@@ -11,6 +11,7 @@
     unzip
     zip
     gitui
+    glow
     file
     dust
     fzf
