@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/helix.nix
+    ./modules/lazygit.nix
   ];
 
   home.stateVersion = "26.05";
@@ -10,7 +11,6 @@
     coreutils
     unzip
     zip
-    gitui
     glow
     file
     dust
