@@ -54,4 +54,8 @@
       init.defaultBranch = "main";
     };
   };
+  home.sessionVariables = {
+    EDITOR = "hx";
+    NIXPKGS_ALLOW_UNFREE = 1;
+  };
 }
