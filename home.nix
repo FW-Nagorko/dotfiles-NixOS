@@ -23,6 +23,8 @@
     shellAliases = {
       zen = "/mnt/c/Program\\ Files/Zen\\ Browser/zen.exe";
       pi = "nix run github:numtide/llm-agents.nix#pi";
+      la = "ls -a";
+      ll = "ls -l";
     };
   };
 
