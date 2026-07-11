@@ -14,9 +14,9 @@
     glow
     file
     dust
-    fzf
     nil
   ];
+
 
   programs.bash = {
     enable = true;
@@ -28,6 +28,16 @@
     };
   };
 
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    defaultOptions = [
+      "--color=fg:#d4d4d4,bg:-1,hl:#9cdcfe"
+      "--color=fg+:#ffffff,bg+:#2e2e2e,hl+:#9cdcfe"
+      "--color=info:#dcdcaa,prompt:#9cdcfe,pointer:#9cdcfe"
+      "--color=marker:#9cdcfe,spinner:#9cdcfe,header:#808080"
+    ];
+  };
 
   programs.npm.enable = true;
   programs.zoxide = {
@@ -46,16 +56,6 @@
     };
   };
 
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name  = "FW-Nagorko";
-        email = "fil.wolinski@gmail.com";
-      };
-      init.defaultBranch = "main";
-    };
-  };
   home.sessionVariables = {
     EDITOR = "hx";
     NIXPKGS_ALLOW_UNFREE = 1;

@@ -19,6 +19,7 @@
       "https://cache.nixos.org/"
     ];
   
+  home-manager.backupFileExtension = "backup";
   home-manager.users.nixos = import ./home.nix;
 
   programs.ssh.startAgent = true;
