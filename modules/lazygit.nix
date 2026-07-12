@@ -1,3 +1,5 @@
+{ config, ... }:
+with config.theme;
 {
   programs.delta = {
     enable = true;
@@ -7,24 +9,24 @@
       side-by-side = false;
       syntax-theme = "Visual Studio Dark+";
 
-      file-style = "#9cdcfe bold";
-      file-decoration-style = "#808080 ul";
+      file-style = "${color.accent} bold";
+      file-decoration-style = "${color.muted} ul";
 
       hunk-header-style = "syntax";
-      hunk-header-decoration-style = "#2e2e2e box";
+      hunk-header-decoration-style = "${color.background} box";
 
       line-numbers-left-format = "";
       line-numbers-right-format = "│ ";
-      line-numbers-minus-style = "#f44747";
-      line-numbers-plus-style = "#9cdcfe";
-      line-numbers-zero-style = "#808080";
+      line-numbers-minus-style = color.error;
+      line-numbers-plus-style = color.accent;
+      line-numbers-zero-style = color.muted;
 
-      minus-style = "syntax #3b2626";
-      minus-emph-style = "syntax #5a2f2f";
-      plus-style = "syntax #1e3a3a";
-      plus-emph-style = "syntax #2a5555";
+      minus-style = "syntax ${color.diffMinusBg}";
+      minus-emph-style = "syntax ${color.diffMinusEmphBg}";
+      plus-style = "syntax ${color.diffPlusBg}";
+      plus-emph-style = "syntax ${color.diffPlusEmphBg}";
 
-      whitespace-error-style = "#f44747 reverse";
+      whitespace-error-style = "${color.error} reverse";
     };
   };
 
@@ -47,7 +49,7 @@
     settings = {
       git = {
         branchLogCmd =
-          "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=format:'%C(#9cdcfe)%h%C(reset) %C(#dcdcaa)%d%C(reset)%n%s%n%C(#808080)%an, %ar%C(reset)%n' {{branchName}} --";
+          "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=format:'%C(${color.accent})%h%C(reset) %C(${color.warning})%d%C(reset)%n%s%n%C(${color.muted})%an, %ar%C(reset)%n' {{branchName}} --";
         pagers = [
           {pager = "delta --dark --paging=never";}
         ];
@@ -61,17 +63,17 @@
           rate = 50;
         };
         theme = {
-          activeBorderColor = [ "#9cdcfe" "bold" ];
-          inactiveBorderColor = [ "#808080" ];
-          searchingActiveBorderColor = [ "#dcdcaa" "bold" ];
-          optionsTextColor = [ "#9cdcfe" ];
-          selectedLineBgColor = [ "#2e2e2e" ];
-          inactiveViewSelectedLineBgColor = [ "#2e2e2e" ];
-          cherryPickedCommitFgColor = [ "#9cdcfe" ];
-          cherryPickedCommitBgColor = [ "#2e2e2e" ];
-          markedBaseCommitFgColor = [ "#000000" ];
-          markedBaseCommitBgColor = [ "#9cdcfe" ];
-          unstagedChangesColor = [ "#f44747" ];
+          activeBorderColor = [ color.accent "bold" ];
+          inactiveBorderColor = [ color.muted ];
+          searchingActiveBorderColor = [ color.warning "bold" ];
+          optionsTextColor = [ color.accent ];
+          selectedLineBgColor = [ color.background ];
+          inactiveViewSelectedLineBgColor = [ color.background ];
+          cherryPickedCommitFgColor = [ color.accent ];
+          cherryPickedCommitBgColor = [ color.background ];
+          markedBaseCommitFgColor = [ color.black ];
+          markedBaseCommitBgColor = [ color.accent ];
+          unstagedChangesColor = [ color.error ];
           defaultFgColor = [ "default" ];
         };
       };

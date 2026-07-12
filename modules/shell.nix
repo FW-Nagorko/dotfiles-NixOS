@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+with config.theme;
 let
   blesh = pkgs.stdenv.mkDerivation {
     pname = "blesh";
@@ -48,11 +49,11 @@ in
   programs.fzf = {
     enable = true;
     defaultOptions = [
-      "--color=fg:#d4d4d4,bg:-1,hl:#9cdcfe"
-      "--color=fg+:#ffffff,bg+:#2e2e2e,hl+:#9cdcfe"
-      "--color=info:#dcdcaa,prompt:#9cdcfe,pointer:#9cdcfe"
-      "--color=marker:#9cdcfe,spinner:#9cdcfe,header:#808080"
-    ];
+      "--color=fg:${color.plaintext},bg:-1,hl:${color.accent}"
+      "--color=fg+:${color.foreground},bg+:${color.background},hl+:${color.accent}"
+      "--color=info:${color.warning},prompt:${color.accent},pointer:${color.accent}"
+      "--color=marker:${color.accent},spinner:${color.accent},header:${color.muted}"
+     ];
   };
 
   programs.bash = {

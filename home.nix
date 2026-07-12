@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./modules/theme.nix
     ./modules/helix.nix
     ./modules/lazygit.nix
     ./modules/shell.nix

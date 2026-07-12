@@ -1,5 +1,6 @@
+{ config, ... }:
+with config.theme;
 {
-  
   programs.helix = {
     enable = true;
     settings = {
@@ -33,8 +34,8 @@
         "ui.statusline" = { bg = "dark-gray"; };
         "ui.bufferline.active" = { fg = "black"; bg = "light-blue"; };
         palette = {
-          dark-gray = "#2e2e2e";
-          light-blue = "#9cdcfe";
+          dark-gray = color.background;
+          light-blue = color.accent;
         };
       };
     };
