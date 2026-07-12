@@ -1,23 +1,9 @@
 { pkgs, config, ... }:
 with config.theme;
-let
-  blesh = pkgs.stdenv.mkDerivation {
-    pname = "blesh";
-    version = "0.4.0-devel3";
-    src = pkgs.fetchurl {
-      url = "https://github.com/akinomyoga/ble.sh/releases/download/v0.4.0-devel3/ble-0.4.0-devel3.tar.xz";
-      sha256 = "sha256-yGEu5hK8axDb/W6Fxsvf18rxUqEtH53iLqCp1zWzCAw=";
-    };
-    dontBuild = true;
-    installPhase = ''
-      mkdir -p $out/share/blesh
-      cp -r ./* $out/share/blesh/
-    '';
-  };
-in
 {
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     presets = ["nerd-font-symbols"];
     settings = {
       format = "($directory$cmd_duration$nix_shell$container$fill$git_metrics\n)$hostname$localip$shlvl$shell$env_var$jobs$sudo$username$character";
@@ -38,25 +24,26 @@ in
         ignore_submodules = true;
         disabled = false;
       };
-
     };
   };
 
   programs.zoxide = {
+    enableZshIntegration = true;
     enable = true;
   };
 
   programs.fzf = {
+    enableZshIntegration = true;
     enable = true;
     defaultOptions = [
       "--color=fg:${color.plaintext},bg:-1,hl:${color.accent}"
       "--color=fg+:${color.foreground},bg+:${color.background},hl+:${color.accent}"
       "--color=info:${color.warning},prompt:${color.accent},pointer:${color.accent}"
       "--color=marker:${color.accent},spinner:${color.accent},header:${color.muted}"
-     ];
+    ];
   };
 
-  programs.bash = {
+  programs.zsh = {
     enable = true;
     shellAliases = {
       zen = "/mnt/c/Program Files/Zen Browser/zen.exe";
@@ -64,30 +51,35 @@ in
       la = "ls -a";
       ll = "ls -l";
     };
+    syntaxHighlighting = {
+      enable = true;
+      styles = {
+        comment = "fg=${color.muted}";
+        alias = "fg=${color.accent},bold";
+        builtin = "fg=${color.accent}";
+        function = "fg=${color.accent}";
+        command = "fg=${color.accent}";
+        precommand = "fg=${color.foreground},italic";
+        default = "fg=${color.foreground}";
+        arg0 = "fg=${color.foreground}";
 
-    initExtra = ''
-      [[ $- == *i* ]] && source "${blesh}/share/blesh/ble.sh" --attach=none --rcfile /dev/null
+        path = "fg=${color.plaintext},underline";
+        path_pathseparator = "fg=${color.muted}";
 
-      bleopt complete_auto_complete=
-      bleopt complete_auto_history=
-      bleopt complete_ambiguous=
-      bleopt complete_menu_complete=
-      bleopt complete_menu_filter=
-      bleopt prompt_eol_mark=
-      bleopt exec_errexit_mark=
-      bleopt char_width_mode=west
+        globbing = "fg=${color.warning}";
+        history-expansion = "fg=${color.warning}";
 
-      if [[ $TERM != "dumb" ]]; then
-        eval "$(${pkgs.starship}/bin/starship init bash --print-full-init)"
-      fi
+        single-quoted-argument = "fg=${color.accent}";
+        double-quoted-argument = "fg=${color.accent}";
+        dollar-quoted-argument = "fg=${color.accent}";
+        rc-quote = "fg=${color.muted}";
 
-      eval "$(${pkgs.zoxide}/bin/zoxide init bash)"
+        assign = "fg=${color.foreground}";
+        redirection = "fg=${color.warning}";
 
-      if [[ ''${BLE_VERSION-} ]]; then
-        ble-attach
-        ble-import -d integration/fzf-completion
-        ble-import -d integration/fzf-key-bindings
-      fi
-    '';
+        unknown-token = "fg=${color.error},bold";
+        reserved-word = "fg=${color.accent}";
+      };
+    };
   };
 }
