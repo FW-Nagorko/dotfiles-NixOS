@@ -15,8 +15,7 @@ with config.theme;
       hunk-header-style = "syntax";
       hunk-header-decoration-style = "${color.background} box";
 
-      line-numbers-left-format = "";
-      line-numbers-right-format = "│ ";
+      line-numbers-format = "│ ";
       line-numbers-minus-style = color.error;
       line-numbers-plus-style = color.accent;
       line-numbers-zero-style = color.muted;
