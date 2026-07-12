@@ -24,8 +24,11 @@
 
   programs.ssh.startAgent = true;
 
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl = {
+    enable = true;
+    defaultUser = "nixos";
+    interop.includePath = false;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
