@@ -13,7 +13,11 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nixos-wsl, ... }: {
+  outputs = { nixpkgs, home-manager, nixos-wsl, ... }:
+  let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -21,6 +25,10 @@
         home-manager.nixosModules.home-manager
         ./configuration.nix
       ];
+    };
+    homeConfigurations."fwolinski" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./work-home.nix ];
     };
   };
 }
