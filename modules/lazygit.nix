@@ -41,6 +41,7 @@ with config.theme;
       };
       init.defaultBranch = "main";
     };
+    ignores = [".helix"];
   };
 
   programs.lazygit = {
