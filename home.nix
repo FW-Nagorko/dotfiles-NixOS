@@ -17,6 +17,7 @@
     file
     dust
     nil
+    nixd
   ];
 
 
