@@ -55,7 +55,7 @@ with config.theme;
       };
       notARepository = "skip";
       gui = {
-        nerdFontsVersion = 2;
+        nerdFontsVersion = 3;
         border = "single";
         spinner = {
           frames = [ "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ];
