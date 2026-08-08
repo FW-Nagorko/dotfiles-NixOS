@@ -24,6 +24,7 @@ with config.theme;
           ":buffer-close!"
           ":redraw"
         ];
+        C-r = ":reload-all";
         C-s = [ ":w" ];
         C-t = "file_picker";
         C-j = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
