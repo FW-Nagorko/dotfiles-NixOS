@@ -18,6 +18,12 @@ with config.theme;
         };
       };
       keys.normal = {
+        space.l = [
+          ":new"
+          ":insert-output lazygit"
+          ":buffer-close!"
+          ":redraw"
+        ];
         C-s = [ ":w" ];
         C-t = "file_picker";
         C-j = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
