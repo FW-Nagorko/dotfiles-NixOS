@@ -18,6 +18,7 @@
     dust
     nil
     nixd
+    btop
   ];
 
 
