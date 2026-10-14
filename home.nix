@@ -19,6 +19,7 @@
     nil
     nixd
     btop
+    tldr
   ];
 
 
